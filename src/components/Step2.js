@@ -6,9 +6,9 @@ import { submitSecondStep } from './actions/stepsActions';
 import { withRouter } from 'react-router-dom';
 
 const LinkContainer = styled.div`
-  align-self: flex-end;
-  margin-bottom: 40px;
-  cursor: pointer;
+    align-self: flex-end;
+    margin-bottom: 40px;
+    cursor: pointer;
 `;
 
 const Title = styled.div`
@@ -23,12 +23,12 @@ const Title = styled.div`
 `;
 
 const HelpLink = styled(Link)`
-  margin-right: 24px;
-  font-family: Ubuntu;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
+    margin-right: 24px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
 `;
 
 const FieldTitle = styled.p`
@@ -40,15 +40,15 @@ const FieldTitle = styled.p`
 `;
 
 const StyledInput = styled.input`
-  height: 44px;
-  width: 100%;  
-  background: #FAFBFF;
-  box-shadow: 0px 6px 30px #EBEDF0;
-  border-radius: 100px;
-  border: none;
+    height: 44px;
+    width: 100%;  
+    background: #FAFBFF;
+    box-shadow: 0px 6px 30px #EBEDF0;
+    border-radius: 100px;
+    border: none;
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled.input`
     width: 160px;
     height: 58px; 
     background: #007AFF;
@@ -65,8 +65,8 @@ const SubmitButton = styled.button`
 `;
 
 const StyledLabel = styled.label`
-  display: block;
-  margin-bottom: 40px;
+    display: block;
+    margin-bottom: 40px;
 `;
 
 const Step2 = ({ country, submitSecondStep, history }) => {
@@ -88,9 +88,9 @@ const Step2 = ({ country, submitSecondStep, history }) => {
             <form onSubmit={handleSubmit}>
                 <StyledLabel>
                     <FieldTitle>{country === 'Ukraine' ? 'Postal Code' : 'Zip'}</FieldTitle>
-                    <StyledInput value={code} onChange={handleCardChange} />
+                    <StyledInput value={code} onChange={handleCardChange} required />
                 </StyledLabel>
-                <SubmitButton type="submit" onClick={handleSubmit}>Submit</SubmitButton>
+                <SubmitButton type="submit" value="Submit" />
             </form>
         </>
     )
@@ -108,6 +108,6 @@ const mapDispatchToProps = ( dispatch ) => {
     }
 };
 
-const wrapperComponent = withRouter(Step2);
+const wrappedComponent = withRouter(Step2);
 
-export default connect(mapStateToProps, mapDispatchToProps)(wrapperComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(wrappedComponent);

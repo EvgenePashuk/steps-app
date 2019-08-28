@@ -7,9 +7,9 @@ import Select from 'react-select';
 import { withRouter } from 'react-router-dom';
 
 const LinkContainer = styled.div`
-  align-self: flex-end;
-  margin-bottom: 40px;
-  cursor: pointer;
+    align-self: flex-end;
+    margin-bottom: 40px;
+    cursor: pointer;
 `;
 
 const Title = styled.div`
@@ -19,17 +19,16 @@ const Title = styled.div`
     font-size: 30px;
     line-height: 34px;
     color: #000000;
-    
     margin-bottom: 40px;
 `;
 
 const HelpLink = styled(Link)`
-  margin-right: 24px;
-  font-family: Ubuntu;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
+    margin-right: 24px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
 `;
 
 const FieldTitle = styled.p`
@@ -57,14 +56,14 @@ const StyledInput = styled.input`
 const StyledSelect = styled(Select)`
   &&& {
     height: 44px;
-  width: 100%;  
-  background: #FAFBFF;
-  box-shadow: 0px 6px 30px #EBEDF0;
-  border-radius: 100px;
+    width: 100%;  
+    background: #FAFBFF;
+    box-shadow: 0px 6px 30px #EBEDF0;
+    border-radius: 100px;
   }
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled.input`
     width: 160px;
     height: 58px; 
     background: #007AFF;
@@ -105,7 +104,6 @@ const Step1 = ({ submitFirstStep, history }) => {
         history.push('/step2')
     };
 
-
     return (
         <>
             <LinkContainer>
@@ -115,7 +113,13 @@ const Step1 = ({ submitFirstStep, history }) => {
             <form onSubmit={handleSubmit}>
                 <StyledLabel>
                     <FieldTitle>Card Number</FieldTitle>
-                    <StyledInput type="number" value={cardNumber} onChange={handleCardChange} />
+                    <StyledInput
+                        type="number"
+                        value={cardNumber}
+                        onChange={handleCardChange}
+                        pattern="[0-9]{16}"
+                        required
+                    />
                 </StyledLabel>
                 <StyledLabel>
                     <FieldTitle>Select country</FieldTitle>
@@ -126,9 +130,10 @@ const Step1 = ({ submitFirstStep, history }) => {
                         components={{
                             IndicatorSeparator: () => null
                         }}
+                        required
                     />
                 </StyledLabel>
-                <SubmitButton type="submit" onClick={handleSubmit}>Next Step</SubmitButton>
+                <SubmitButton type="submit" value="Next Step" />
             </form>
         </>
     )
@@ -140,6 +145,6 @@ const mapDispatchToProps = ( dispatch ) => {
     }
 };
 
-const wrapperComponent = withRouter(Step1);
+const wrappedComponent = withRouter(Step1);
 
-export default connect(null, mapDispatchToProps)(wrapperComponent);
+export default connect(null, mapDispatchToProps)(wrappedComponent);
