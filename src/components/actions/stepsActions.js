@@ -4,11 +4,10 @@ import {
     CLEAR_STEPS
 } from './actions-types/steps-actions';
 
-export const submitFirstStep = ( cardNumber, country ) => {
+export const submitFirstStep = ( data ) => {
     return {
         type: SUBMIT_FIRST_STEP,
-        cardNumber,
-        country
+        data
     }
 };
 

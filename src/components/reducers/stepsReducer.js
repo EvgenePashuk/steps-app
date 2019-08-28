@@ -14,23 +14,25 @@ const initialState = {
 const stepsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SUBMIT_FIRST_STEP: {
+            const { cardNumber, country } = action.data;
             return {
                 ...state,
-                cardNumber: action.cardNumber,
-                country: action.country
+                cardNumber,
+                country
             }
         }
 
         case SUBMIT_SECOND_STEP: {
+            const { code } = action;
             if ( state.country === 'Ukraine' ) {
                 return {
                     ...state,
-                    postalCode: action.code
+                    postalCode: code
                 }
             } else {
                 return {
                     ...state,
-                    zip: action.code
+                    zip: code
                 }
             }
         }
