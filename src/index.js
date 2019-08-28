@@ -1,16 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
 import './index.css';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import Root from './Root';
+import stepsReducer from "./components/reducers/stepsReducer";
 
-const App = (
-    <Router>
-        <Switch>
-            <Route path="step1" components={} />
-            <Route path="step2" components={} />
-            <Route path="step3" components={} />
-        </Switch>
-    </Router>
-)
+const store = createStore(stepsReducer);
 
-ReactDOM.render(App, document.getElementById('root'));
+ReactDOM.render(<Root store={store} />, document.getElementById('root'));
